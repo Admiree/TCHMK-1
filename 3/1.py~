@@ -1,0 +1,88 @@
+import sys 
+from ctypes import cdll
+lib = cdll.LoadLibrary('./libBigInt.so')
+
+def PrintStart():
+	print"Program TCHMK.\n"
+	print"Enter the input parameters:\n"
+	print"\n<name of program> <filename A> <operation>\n<filename B> <result filename C> [b] [filename with module]\n\n"
+	print"Parametr: \n"
+	print"\"-b\" - binfile\n"
+	print"Operations: \n"
+	print"\"+\" - addition\n"
+	print"\"-\" - subtraction\n"
+	print"\"*\" - multiplication\n"
+	print"\"/\" - division\n"
+	print"\"%\" - taking the remainder\n"		 
+	print"\"^\" - involution (pow)\n"
+	sys.exit(-1)
+
+
+f1 = sys.argv[1]
+act = sys.argv[2]
+f2 =sys.argv[3]
+fres = sys.argv[4]
+bin = 0
+fm = ""
+
+if len(sys.argv) < 5 or len(sys.argv) > 7:
+	print "Wrong number of args"
+	PrintStart();
+
+if len(sys.argv[2]) > 1:
+	print "unknown operation"
+	PrintStart()
+	 
+if len(sys.argv) == 6:
+
+	 if sys.argv[5] == "-b":
+		 bin  = 1;
+	 else:
+		 fm = sys.argv[5]
+
+if len(sys.argv) == 7:
+	bin = 1
+	fm = sys.argv[6]
+
+print"f1 :",f1;
+print"act :",act;
+print"f2 :",f2;
+print"fres :",fres;
+print"bin :",bin;
+if fm:
+	print"fm :",fm
+a = BigInt.BigInt()
+b = BigInt.BigInt()
+c = BigInt.BigInt()
+'''
+if bin == True:
+	a.getFrom_bin(fileA)
+	b.getFrom_bin(fileB)
+else:
+	a.getFrom_txt(fileA)
+	b.getFrom_txt(fileB)
+
+if operation == "+":
+	c = a + b;
+elif operation == "-":
+	c = a - b;
+elif operation == "*":
+	c = a * b;
+elif operation == "/":
+	c = a / b;
+elif operation == "%":
+	c = a % b;
+elif operation == "^":
+	c = a ^ b;
+else:
+	PrintStart()
+	
+print"a = ",a
+print"b = ",b
+print"c = ",c
+
+if bin == False:
+	c.saveTo_txt(fileC)
+else:
+	c.saveTo_bin(fileC)
+'''
